@@ -35,9 +35,9 @@ public class ControllerAgenda extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.print(request.getParameter("name"));
-            out.print(request.getParameter("email"));
-            out.print(request.getParameter("phone"));
+            out.print("<p>Nome: " + request.getParameter("name") + "</p>");
+            out.print("<p>E-mail: " + request.getParameter("email") + "</p>");
+            out.print("<p>Telefone: " + request.getParameter("phone") + "</p>");
         }
     }
 
@@ -67,6 +67,8 @@ public class ControllerAgenda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        processRequest(request, response);
         
         Contact contact = new Contact();
         contact.setName(request.getParameter("name"));
