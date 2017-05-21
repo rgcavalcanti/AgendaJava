@@ -4,9 +4,33 @@
         <servlet-name>ControllerAgenda</servlet-name>
         <servlet-class>control.ControllerAgenda</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <jsp-file>/view/index.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>create</servlet-name>
+        <jsp-file>/view/create.html</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>show</servlet-name>
+        <jsp-file>/view/show.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControllerAgenda</servlet-name>
         <url-pattern>/ControllerAgenda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>create</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>show</servlet-name>
+        <url-pattern>/show</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +38,8 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>view/agenda/create.html</welcome-file>
+        <welcome-file>view/create.html</welcome-file>
     </welcome-file-list>
+    <jsp-config>
+    </jsp-config>
 </web-app>

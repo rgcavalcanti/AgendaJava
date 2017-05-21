@@ -36,14 +36,15 @@ public class ContactDAO {
         return result;
     }
     
-    public Contact show(){
+    public Object show(int id){
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.getCurrentSession();
         session.beginTransaction();
-        Query q = session.createQuery("from Contact");
-        List result = q.;
+        Query q = session.createQuery("from Contact where id = :id");
+        q.setParameter("id", id);
+        List result = q.list();
         session.close();
-        return result;
+        return result.get(0);
     }
     
     public void update(Contact contact){
@@ -62,8 +63,14 @@ public class ContactDAO {
         session.getTransaction().commit();
     }
     
-    public void delete(){
-        
+    public void delete(int id){
+         SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        Query q = session.createQuery( "delete Contact where id = :id");
+        q.setParameter("id", id);
+        q.executeUpdate();
+        session.getTransaction().commit();
     }
 
 }

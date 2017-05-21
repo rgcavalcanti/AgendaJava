@@ -18,8 +18,7 @@
         <table>
             <tr>
                 <th>Nome</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
+                <th>Opções</th>
             </tr>
             <%
                 ContactDAO dao = new ContactDAO();
@@ -27,8 +26,13 @@
                 
                 for(Contact c: contacts){
                     out.print("<tr><td>" + c.getName()+ "</td>");
-                    out.print("<td>" + c.getEmail() + "</td>");
-                    out.print("<td>" + c.getPhone()+ "</td></tr>");
+                    out.print("<td>");
+                    out.print("<form method='DELETE' action='ControllerAgenda'>");
+                    out.print("<input type='submit' value='apagar'>");
+                    out.print("</form>");
+                    out.print("</td>");
+                    out.print("");
+                    out.print("");
                 } 
             %>
             </p>

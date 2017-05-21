@@ -68,16 +68,38 @@ public class ControllerAgenda extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        processRequest(request, response);
-        
         Contact contact = new Contact();
         contact.setName(request.getParameter("name"));
         contact.setEmail(request.getParameter("email"));
         contact.setPhone(request.getParameter("phone"));
 
         ContactDAO dao = new ContactDAO();
+        try {
+            dao.create(contact);
+        }
+        catch(Exception ex){
+           response.sendError(0);
+        }
+        finally{
+            response.sendRedirect("/Agenda/show?id=" + contact.getId().toString());
+        }
+    }
+    
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+
+        ContactDAO dao = new ContactDAO();
         
-        dao.create(contact);
+        try {
+            dao.delete(Integer.parseInt(request.getParameter("id")));
+        }
+        catch(Exception ex){
+           response.sendError(0);
+        }
+        finally{
+            response.sendRedirect("/Agenda/index");
+        }
     }
 
     /**
