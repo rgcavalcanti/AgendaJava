@@ -27,11 +27,11 @@
                 for(Contact c: contacts){
                     out.print("<tr><td>" + c.getName()+ "</td>");
                     out.print("<td>");
-                    out.print("<form method='DELETE' action='ControllerAgenda'>");
+                    out.print("<form method='POST' action='ControllerAgenda?id="+ c.getId() +"'>");
+                    out.print("<input type='hidden' name='action' value='delete'>");
                     out.print("<input type='submit' value='apagar'>");
                     out.print("</form>");
                     out.print("</td>");
-                    out.print("");
                     out.print("");
                 } 
             %>
