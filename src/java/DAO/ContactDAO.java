@@ -18,58 +18,42 @@ import util.HibernateUtil;
  */
 public class ContactDAO {
 
+    ContactDAO() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
     public void create(Contact contact) {
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
         session.beginTransaction();
         session.save(contact);
         session.getTransaction().commit();
     }
     
-    public List index(){
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
+    public Contact index() {
         session.beginTransaction();
         Query q = session.createQuery("FROM Contact");
-        List result = q.list();
+        List result = (Contact) q.list();
         session.close();
         return result;
     }
     
-    public Object show(int id){
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
+    public Object show(int id) {
         session.beginTransaction();
         Query q = session.createQuery("from Contact where id = :id");
         q.setParameter("id", id);
-        List result = q.list();
+        List result = (Contact) q.list();
         session.close();
         return result.get(0);
     }
     
-    public void update(Contact contact){
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
+    public void update(Contact contact) {
         session.beginTransaction();
-        Query q = session.createQuery( "update Contact"
-                                     + "set name = :name"
-                                     + "set email = :email"
-                                     + "set phone = :phone"
-                                     );
-        q.setParameter("name", contact.getName());
-        q.setParameter("email", contact.getEmail());
-        q.setParameter("phone", contact.getPhone());
-        q.executeUpdate();
+        session.update(contact);
         session.getTransaction().commit();
     }
     
-    public void delete(int id){
-         SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.getCurrentSession();
+    public void delete(Contact contact) {
         session.beginTransaction();
-        Query q = session.createQuery( "delete Contact where id = :id");
-        q.setParameter("id", id);
-        q.executeUpdate();
+        session.delete(contact)
         session.getTransaction().commit();
     }
 
