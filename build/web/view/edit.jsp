@@ -1,6 +1,6 @@
 <%-- 
-    Document   : show
-    Created on : 13/05/2017, 17:15:41
+    Document   : edit
+    Created on : 03/06/2017, 14:35:34
     Author     : rafael
 --%>
 
@@ -19,15 +19,14 @@
             ContactDAO dao = new ContactDAO();
             contact = (Contact)dao.show(Integer.parseInt(request.getParameter("id")));
         %>
-        <h1><%= contact.getName() %></h1>
-        <p>Email: <%= contact.getEmail() %></p>
-        <p>Telefone: <%= contact.getPhone()%></p>
-        <a href="./index">ver todos</a>
-        <a href="./edit?id=<%= contact.getId() %>">editar</a>
-        <form action="ControllerAgenda" method="GET">
-            <input type="hidden" name="action" value="delete">
+        <h1>Editar</h1>
+        <form action="ControllerAgenda" method="post">
+            <input type="hidden" name="action" value="edit">
             <input type="hidden" name="id" value="<%= contact.getId() %>">
-            <input type="submit" value="apagar">
+            <input type="text" name="name" value="<%= contact.getName() %>"><br>
+            <input type="text" name="email" value="<%= contact.getEmail()%>"><br>
+            <input type="text" name="phone" value="<%= contact.getPhone()%>"><br>
+            <input type="submit" value="Salvar alterações">
         </form>
     </body>
 </html>

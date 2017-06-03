@@ -22,7 +22,11 @@
         <h1><%= contact.getName() %></h1>
         <p>Email: <%= contact.getEmail() %></p>
         <p>Telefone: <%= contact.getPhone()%></p>
-        <form action="ControllerAgenda?id=<%= contact.getId() %>" method="delete">
+        <a href="./index">ver todos</a>
+        <a href="./edit?id=<%= contact.getId() %>">editar</a>
+        <form action="ControllerAgenda" method="GET">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="<%= contact.getId() %>">
             <input type="submit" value="apagar">
         </form>
     </body>

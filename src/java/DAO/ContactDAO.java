@@ -9,7 +9,7 @@ import java.util.List;
 import model.Contact;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 /**
@@ -17,44 +17,54 @@ import util.HibernateUtil;
  * @author rafael
  */
 public class ContactDAO {
-
-    ContactDAO() {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-    }
-
-    public void create(Contact contact) {
-        session.beginTransaction();
-        session.save(contact);
-        session.getTransaction().commit();
+    
+    private Session session = null;
+    
+    public ContactDAO(){
+        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public Contact index() {
-        session.beginTransaction();
+    public int create(Contact contact) {
+        Transaction tx = session.beginTransaction();
+        int id = (Integer) session.save(contact);
+        tx.commit();
+        return id;
+    }
+    
+    public List<Contact> index() {
+        Transaction tx = session.beginTransaction();
         Query q = session.createQuery("FROM Contact");
-        List result = (Contact) q.list();
+        List result = (List<Contact>) q.list();
         session.close();
         return result;
     }
     
-    public Object show(int id) {
-        session.beginTransaction();
+    public Contact show(int id) {
+        Transaction tx = session.beginTransaction();
         Query q = session.createQuery("from Contact where id = :id");
         q.setParameter("id", id);
-        List result = (Contact) q.list();
+        List<Contact> result = (List<Contact>) q.list();
         session.close();
         return result.get(0);
     }
     
     public void update(Contact contact) {
-        session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.update(contact);
-        session.getTransaction().commit();
+        tx.commit();
     }
     
     public void delete(Contact contact) {
-        session.beginTransaction();
-        session.delete(contact)
-        session.getTransaction().commit();
+        Transaction tx = session.beginTransaction();
+        session.delete(contact);
+        tx.commit();
     }
-
+    
+    public void delete(int id) {
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("delete from Contact where id = :id");
+        q.setParameter("id", id);
+        q.executeUpdate();
+        tx.commit();
+    }
 }

@@ -25,17 +25,25 @@
                 List<Contact> contacts = dao.index();
                 
                 for(Contact c: contacts){
-                    out.print("<tr><td>" + c.getName()+ "</td>");
-                    out.print("<td>");
-                    out.print("<form method='POST' action='ControllerAgenda?id="+ c.getId() +"'>");
-                    out.print("<input type='hidden' name='action' value='delete'>");
-                    out.print("<input type='submit' value='apagar'>");
-                    out.print("</form>");
-                    out.print("</td>");
-                    out.print("");
+                    out.print(
+                     "<tr>"
+                    +  "<td>" + c.getName()+ "</td>"
+                    +  "<td>"
+                    +    "<a href='/Agenda/show?id=" + c.getId() + "'>ver</a>"
+                    +  "</td>"
+                    +  "<td>"
+                    +    "<form method='GET' action='ControllerAgenda'>"
+                    +      "<input type='hidden' name='action' value='delete'>"
+                    +      "<input type='hidden' name='id' value='" + c.getId() + "'>"
+                    +      "<input type='submit' value='apagar'>"
+                    +    "</form>"
+                    +  "</td>"
+                    +"</tr>"
+                    );
                 } 
             %>
             </p>
         </table>
+        <a href="./">adicionar contato</a>
     </body>
 </html>

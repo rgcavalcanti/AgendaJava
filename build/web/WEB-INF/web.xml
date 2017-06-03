@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ControllerAgenda</servlet-name>
-        <servlet-class>control.ControllerAgenda</servlet-class>
+        <servlet-class>controller.ControllerAgenda</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>index</servlet-name>
@@ -15,6 +15,10 @@
     <servlet>
         <servlet-name>show</servlet-name>
         <jsp-file>/view/show.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>edit</servlet-name>
+        <jsp-file>/view/edit.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>ControllerAgenda</servlet-name>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>show</servlet-name>
         <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
