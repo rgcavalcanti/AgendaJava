@@ -20,13 +20,15 @@
             <h1 class="title"><%= contact.getName()%></h1>
             <p>Email: <%= contact.getEmail()%></p>
             <p>Telefone: <%= contact.getPhone()%></p>
-            <a class="button" href="./index">ver todos</a>
-            <a class="button" href="./edit?id=<%= contact.getId()%>">editar</a>
-            <form action="ControllerAgenda" method="GET">
-                <input type="hidden" name="id" value="<%= contact.getId()%>">
-                <input type="submit" type="submit">
-            </form>
-            <button class="button" onclick="makeSubmit()">Apagar</button>
+            <div class="buttonsContainer">
+                <a class="button" href="./index">ver todos</a>
+                <a class="button" href="./edit?id=<%= contact.getId()%>">editar</a>
+                <form class="form-button" action="ControllerAgenda" method="GET">
+                    <input type="hidden" name="id" value="<%= contact.getId()%>">
+                    <input id="submitButton" type="submit">
+                </form>
+                <button class="button" onclick="makeSubmit()">Apagar</button>
+            </div>
         </div>
     </body>
 </html>

@@ -22,18 +22,24 @@
                 <input type="hidden" name="action" value="edit">
                 <input type="hidden" name="id" value="<%= contact.getId()%>">
                 <div class="field">
+                    <span class="title">Nome</span>
                     <input type="text" name="name" value="<%= contact.getName()%>"><br>
                 </div>
                 <div class="field">
+                    <span class="title">Email</span>
                     <input type="text" name="email" value="<%= contact.getEmail()%>"><br>
                 </div>
                 <div class="field">
+                    <span class="title">Telefone</span>
                     <input type="text" name="phone" value="<%= contact.getPhone()%>"><br>
                 </div>
                 <input id="submitButton" type="submit">
             </form>
-            <button class="button" onclick="makeSubmit()">Salvar Alterações</button>
-            <a class="button" href="./index">Cancelar</a>
+
+            <div class="buttonsContainer">
+                <button class="button" onclick="makeSubmit()">Salvar Alterações</button>
+                <a class="button" href="./index">Cancelar</a>
+            </div>
         </div>
     </body>
 </html>

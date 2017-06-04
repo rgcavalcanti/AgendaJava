@@ -33,8 +33,9 @@
                                 + "<form class='form-button' method='GET' action='ControllerAgenda'>"
                                 + "<input type='hidden' name='action' value='delete'>"
                                 + "<input type='hidden' name='id' value='" + c.getId() + "'>"
-                                + "<button class='button' type='submit'>Apagar</button>"
+                                + "<input id='submitButton" + c.getId() + "' type='submit'>"
                                 + "</form>"
+                                + "<button class='button' onclick='makeSubmit(" + c.getId() + ")'>Apagar</button>"
                                 + "</td>"
                                 + "</tr>"
                         );
@@ -42,7 +43,6 @@
                 %>
             </table>
             <div class="buttonsContainer">
-
                 <a class="button" href="./">adicionar contato</a>
             </div>
         </div>
