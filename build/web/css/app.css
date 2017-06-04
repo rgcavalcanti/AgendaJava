@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    background-color: rgba(243, 156, 18, 0.4);
+    display: flex;
+    height: 100vh;
+    justify-content: space-around;
+    align-content: center ;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-content: center;
+    width:100%;
+}
+
+.block {
+    background-color: #ecf0f1;
+    color: #34495e;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px #34495e;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    height: 50vh;
+    min-width: 40vw;
+}
+
+
+.title{
+    width: 100%;
+    text-align: center;
+}
+
+.field {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-content: space-between;
+    align-items: center;
+    width:70%;
+}
+
+
+.field + .field{
+    margin-top: 20px;
+}
+
+    .field .title{
+        width: auto;
+        margin-right: 10px;
+    }
+
+    .field input[type="text"] {
+        height: 30px;
+        width: 70%;
+        padding: 0 10px;
+        border-radius: 5px;
+        box-shadow: 1px 2px 3px #34495e;
+    }
+
+
+.buttonsContainer{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.button{
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1em;
+    box-shadow: 1px 2px 3px #34495e;
+}
+
+.button + .button{
+    margin-left: 20px;
+}
+
+.form-button {
+}
+
+input[type="submit"]{
+    display: none;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: #34495e;
+    color: white;
+}
+
+table td {
+    background-color: white;
+}
+
+tale tr + tr, table th + tr {
+    border-bottom: 2px solid #34495e;
+}
+
+table td, table th {
+    padding: 10px;    
+}
+
+table td + td, table th + th{
+    border-left: 2px solid rgb(0,0,0);
+}
+
+table form {
+    width: 20%;
+    display: inline;
+    margin-left: 20px;
+}
+
+
+
+

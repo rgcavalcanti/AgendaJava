@@ -1,33 +1,32 @@
-<%-- 
-    Document   : show
-    Created on : 13/05/2017, 17:15:41
-    Author     : rafael
---%>
-
 <%@page import="DAO.ContactDAO"%>
 <%@page import="model.Contact"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Agenda</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/app.css" rel="stylesheet" type="text/css"/>
+        <script src="./js/app.js" type="text/javascript"></script>
     </head>
     <body>
         <%
             Contact contact = new Contact();
             ContactDAO dao = new ContactDAO();
-            contact = (Contact)dao.show(Integer.parseInt(request.getParameter("id")));
+            contact = (Contact) dao.show(Integer.parseInt(request.getParameter("id")));
         %>
-        <h1><%= contact.getName() %></h1>
-        <p>Email: <%= contact.getEmail() %></p>
-        <p>Telefone: <%= contact.getPhone()%></p>
-        <a href="./index">ver todos</a>
-        <a href="./edit?id=<%= contact.getId() %>">editar</a>
-        <form action="ControllerAgenda" method="GET">
-            <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="id" value="<%= contact.getId() %>">
-            <input type="submit" value="apagar">
-        </form>
+        <div class="block">
+            <h1 class="title"><%= contact.getName()%></h1>
+            <p>Email: <%= contact.getEmail()%></p>
+            <p>Telefone: <%= contact.getPhone()%></p>
+            <a class="button" href="./index">ver todos</a>
+            <a class="button" href="./edit?id=<%= contact.getId()%>">editar</a>
+            <form action="ControllerAgenda" method="GET">
+                <input type="hidden" name="id" value="<%= contact.getId()%>">
+                <input type="submit" type="submit">
+            </form>
+            <button class="button" onclick="makeSubmit()">Apagar</button>
+        </div>
     </body>
 </html>
